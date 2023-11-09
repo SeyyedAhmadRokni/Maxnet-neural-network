@@ -1,7 +1,7 @@
-module Reg(clk, inp, out, we);
+module Register(clk, inp, out, we);
     input clk, we;
     input [31:0] inp;
-    output [3:0] out;
+    output [31:0] out;
     reg [31:0] value;
     assign out = value;
 
