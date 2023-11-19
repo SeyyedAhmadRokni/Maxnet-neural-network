@@ -3,12 +3,12 @@ module Maxnet_model(input start , clk , input [31:0] epsilon,a1,a2,a3,a4 , outpu
     ,valid , plu_done;
 
     DataPath dp(.clk(clk), .rst_plu(rst), .eps_reg_we(eps_reg_we), .we_a_reg(we_a_reg), 
-            .we_prim(we_prim), .mux_sel(mux_sel), .start_plu(start_plu),.a1(a1) , .a2(a2), .a3(a3), .a4(a4) , .epsilon(epsilon)
+            .we_prim(we_prim), .mux_sel(mux_sel), .start(start_plu),.a1_init(a1) , .a2_init(a2), .a3_init(a3), .a4_init(a4) , .epsilon(epsilon)
             , .plu_done(plu_done) , .finish(valid) , .out(out));
     
 
     Controler c(.clk(clk) , .start(start), .valid(valid), .plu_done(plu_done),
              .eps_reg_we(eps_reg_we), .we_a_reg(we_a_reg), 
-            .we_prim(we_prim), .mux_sel(mux_sel), .start_plu(start_plu))
+            .we_prim(we_prim), .mux_sel(mux_sel), .start_plu(start_plu));
 
 endmodule
