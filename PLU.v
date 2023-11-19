@@ -1,5 +1,5 @@
-`include "PLU_datapath.v"
-`include "PLU_cnt.v"
+// `include "PLU_datapath.v"
+// `include "PLU_cnt.v"
 module PLU(clk, rst, start, done, 
            w1, w2, w3, w4, a1, a2, a3, a4, out 
            );
