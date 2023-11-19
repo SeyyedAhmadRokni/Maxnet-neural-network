@@ -25,11 +25,11 @@ module  DataPath(input clk ,rst_plu ,eps_reg_we ,we_a_reg , we_prim , mux_sel , 
     PLU  p1(.clk(clk), .start(start), .done(plu1_done), .w1(one_reg), .w2(epsilon_wire_out)
         ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu));
     PLU  p2(.clk(clk), .start(start), .done(plu2_done), .w1(epsilon_wire_out), .w2(one_reg)
-        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu));
+        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu2), .rst(rst_plu));
     PLU  p3(.clk(clk), .start(start), .done(plu3_done), .w1(epsilon_wire_out), .w2(epsilon_wire_out)
-        ,.w3(one_reg), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu));
+        ,.w3(one_reg), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu3), .rst(rst_plu));
     PLU  p4(.clk(clk), .start(start), .done(plu4_done), .w1(epsilon_wire_out), .w2(epsilon_wire_out)
-        ,.w3(epsilon_wire_out), .w4(one_reg), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu));
+        ,.w3(epsilon_wire_out), .w4(one_reg), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu4), .rst(rst_plu));
 
     OutputCheck outch(.clk(clk) , .x1(plu1),.x2(plu2),.x3(plu3),.x4(plu4), .a1(a1_prim),.a2(a2_prim),.a3(a3_prim)
                 ,.a4(a4_prim) , .out(out) , .valid(finish));
