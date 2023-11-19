@@ -17,7 +17,7 @@ module  Controler(input start ,clk , valid , plu_done ,
             B:begin ns = C ; start_plu =1; end 
             C:begin ns = (plu_done==1) ? D : C;end 
             D:begin ns = E ; end 
-            E:begin ns = (valid==1) ? F : B ;end 
+            E:begin ns = (valid == 1) ? F : B ;end 
             F:begin ns = S ;finish=1; end 
            
 
