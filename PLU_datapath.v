@@ -27,10 +27,10 @@ module PLU_datapath(clk, w1, w2, w3, w4, a1, a2, a3, a4, out, w_we, a_we, r1_we,
     Register a4_reg(clk, a4, a4_out, a_we);
 
     wire [31:0] mul1_out, mul2_out, mul3_out, mul4_out;
-    Mul mul1 (a1_out, w1_out, mul1_out);
-    Mul mul2 (a2_out, w2_out, mul2_out);
-    Mul mul3 (a3_out, w3_out, mul3_out);
-    Mul mul4 (a4_out, w4_out, mul4_out);
+    Mul mul1(a1_out, w1_out, mul1_out);
+    Mul mul2(a2_out, w2_out, mul2_out);
+    Mul mul3(a3_out, w3_out, mul3_out);
+    Mul mul4(a4_out, w4_out, mul4_out);
 
     wire [31:0] r1_1_out, r1_2_out, r1_3_out, r1_4_out;
     Register r1_1(clk, mul1_out, r1_1_out, r1_we);
