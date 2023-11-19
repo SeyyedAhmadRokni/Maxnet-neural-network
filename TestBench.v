@@ -13,7 +13,7 @@ module  TestBench();
     // , e = 32'b10111110010011001100110011001101; // -0.2
     Maxnet_model mxn( start , clk ,eps , a1 , a2 , a3 , a4 ,  finish , out);
     initial begin
-        #12 start=1;
+        #32 start=1;
         #10 start=0;
 
         #2000 

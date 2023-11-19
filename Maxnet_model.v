@@ -9,6 +9,6 @@ module Maxnet_model(input start , clk , input [31:0] epsilon,a1,a2,a3,a4 , outpu
 
     Controler c(.clk(clk) , .start(start), .valid(valid), .plu_done(plu_done),
              .eps_reg_we(eps_reg_we), .we_a_reg(we_a_reg), 
-            .we_prim(we_prim), .mux_sel(mux_sel), .start_plu(start_plu));
+            .we_prim(we_prim), .mux_sel(mux_sel), .start_plu(start_plu) , .rst(rst));
 
 endmodule
