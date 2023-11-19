@@ -15,7 +15,7 @@ module PLU_cnt(clk, rst, start, done, a_we, w_we, r1_we, r2_we, r3_we);
         if (rst)
             ps <= S0;
         else
-            ns <= ps;
+            ps <= ns;
     end
 
     always @(ps, start) begin
@@ -25,8 +25,6 @@ module PLU_cnt(clk, rst, start, done, a_we, w_we, r1_we, r2_we, r3_we);
             S2: ns = S3;
             S3: ns = S4;
             S4: ns = S0;
-            default: 
-            ns = S0;
         endcase
     end
 
