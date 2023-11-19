@@ -1,4 +1,4 @@
-module Adder();
+module Adder(a, b, out);
     input [31:0] a, b;
     output [31:0] out;
 
@@ -17,24 +17,24 @@ module Adder();
     always @(a, b) begin
         case ({little[31], big[31]})
             2'b00:begin
-                new_mant = nr_mant_little_out + nr_mant_big_out;
+                new_mant = nr_mant_little + nr_mant_big;
                 sign = 1'b0;
             end
             2'b01:begin
-                new_mant = nr_mant_big_out - nr_mant_little_out;
+                new_mant = nr_mant_big - nr_mant_little;
                 sign = 1'b1;
             end
             2'b10:begin
-                new_mant = nr_mant_big_out - nr_mant_little_out;
+                new_mant = nr_mant_big - nr_mant_little;
                 sign = 1'b0;
             end
             2'b11:begin
-                new_mant = nr_mant_little_out + nr_mant_big_out;
+                new_mant = nr_mant_little + nr_mant_big;
                 sign = 1'b1;
             end
         endcase
-        out = {sign, exp, mant};
     end 
+    assign out = {sign, exp, mant};
     Shift_exp_mant sem(nr_exp_little, new_mant, exp, mant);
 
 endmodule
