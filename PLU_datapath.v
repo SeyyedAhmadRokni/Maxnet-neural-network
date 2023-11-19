@@ -1,6 +1,6 @@
 // `include "Register.v"
 // `include "ReLU.v"
-module PLU_datapath(clk, w1, w2, w3, w4, a1, a2, a3, a4, start, out, w_we, a_we, r1_we, r2_we, r3_we);
+module PLU_datapath(clk, w1, w2, w3, w4, a1, a2, a3, a4, out, w_we, a_we, r1_we, r2_we, r3_we);
     input clk;
     input [31:0] w1;
     input [31:0] w2;
@@ -11,7 +11,6 @@ module PLU_datapath(clk, w1, w2, w3, w4, a1, a2, a3, a4, start, out, w_we, a_we,
     input [31:0] a2;
     input [31:0] a3;
     input [31:0] a4;
-    input start;
     output [31:0] out;
     output w_we, a_we, r1_we, r2_we, r3_we;
 
