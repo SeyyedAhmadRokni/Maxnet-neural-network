@@ -1,5 +1,5 @@
 module  DataPath(input clk ,rst_plu ,eps_reg_we ,we_a_reg , we_prim , mux_sel , start  , input [31:0] a1_init,a2_init,a3_init,a4_init,epsilon   , 
-    output plu_done , finish , output [31:0] out, output overflow);
+    output plu_done , finish , overflow , output [31:0] out);
     
     wire [31:0] a1_wire_out , a2_wire_out , a3_wire_out , a4_wire_out , plu1 , plu2 , plu3 , plu4,
         epsilon_wire_out ,mux1_out,mux3_out,mux2_out,mux4_out ,a1_prim,a2_prim,a3_prim,a4_prim;

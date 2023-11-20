@@ -1,4 +1,4 @@
-module Maxnet_model(input start , clk , input [31:0] epsilon,a1,a2,a3,a4 , output finish , output [31:0] out, output overflow);
+module Maxnet_model(input start , clk , input [31:0] epsilon,a1,a2,a3,a4 , output finish , overflow , output [31:0] out);
     wire start_plu ,we_a_reg ,eps_reg_we ,we_prim , rst , mux_sel 
     ,valid , plu_done;
 
