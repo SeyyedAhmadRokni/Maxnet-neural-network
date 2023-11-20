@@ -5,9 +5,9 @@ module OutputCheck(input clk , input [31 :0] x1 ,x2,x3,x4,a1,a2,a3,a4 , output v
     assign ch2 = ~ (| x2[30:0]);
     assign ch3 = ~ (| x3[30:0]);
     assign ch4 = ~ (| x4[30:0]);
-    reg xor_check , three_zero;
-    assign xor_check= ch1 ^ ch2 ^ ch3 ^ ch4;
-    assign three_zero =xor_check & ((ch1 & ch2) | (ch3 & ch4));
+    wire xor_check , three_zero;
+    assign xor_check = ch1 ^ ch2 ^ ch3 ^ ch4;
+    assign three_zero = xor_check & ((ch1 & ch2) | (ch3 & ch4));
 
 
     MUX2 mx1(.sel(ch2) , .a(a2) , .b(a1) , .out(wire_mux1));
