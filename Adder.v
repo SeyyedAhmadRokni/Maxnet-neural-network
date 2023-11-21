@@ -41,7 +41,7 @@ module Adder(a, b, out, overflow);
                 {carry, new_mant} <= nr_mant_little + nr_mant_big;
             end
         endcase
-        if ((a[30:23] == 7'b1111111 & a[22:0] == 23'b0) | (b[30:23] == 7'b1111111 & b[22:0] == 23'b0 ))
+        if ((a[30:23] == 8'b11111111 & a[22:0] == 23'b0) | (b[30:23] == 8'b11111111 & b[22:0] == 23'b0 ))
              overflow <= 1'b1;
     end 
     assign out = a[30:0] == b[30:0] & (a[31] ^ b[31]) ? 32'b0 
