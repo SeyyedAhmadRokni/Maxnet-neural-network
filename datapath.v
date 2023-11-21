@@ -1,8 +1,10 @@
 module  DataPath(input clk ,rst_plu ,eps_reg_we ,we_a_reg , we_prim , mux_sel , start  , input [31:0] a1_init,a2_init,a3_init,a4_init,epsilon   , 
-    output plu_done , finish , loop , output [31:0] out);
+    output plu_done , finish, loop , overflow , output [31:0] out);
     
     wire [31:0] a1_wire_out , a2_wire_out , a3_wire_out , a4_wire_out , plu1 , plu2 , plu3 , plu4,
         epsilon_wire_out ,mux1_out,mux3_out,mux2_out,mux4_out ,a1_prim,a2_prim,a3_prim,a4_prim;
+    wire ov1, ov2, ov3, ov4;
+    assign overflow = ov1 | ov2 | ov3 | ov4;
     wire plu1_done,plu2_done,plu3_done,plu4_done;
     
     wire constant_a1,constant_a2,constant_a3,constant_a4;
@@ -31,13 +33,13 @@ module  DataPath(input clk ,rst_plu ,eps_reg_we ,we_a_reg , we_prim , mux_sel , 
 
 
     PLU  p1(.clk(clk), .start(start), .done(plu1_done), .w1(one_reg), .w2(epsilon_wire_out)
-        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu));
+        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu1), .rst(rst_plu), .overflow(ov1));
     PLU  p2(.clk(clk), .start(start), .done(plu2_done), .w1(epsilon_wire_out), .w2(one_reg)
-        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu2), .rst(rst_plu));
+        ,.w3(epsilon_wire_out), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu2), .rst(rst_plu), .overflow(ov2));
     PLU  p3(.clk(clk), .start(start), .done(plu3_done), .w1(epsilon_wire_out), .w2(epsilon_wire_out)
-        ,.w3(one_reg), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu3), .rst(rst_plu));
+        ,.w3(one_reg), .w4(epsilon_wire_out), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu3), .rst(rst_plu), .overflow(ov3));
     PLU  p4(.clk(clk), .start(start), .done(plu4_done), .w1(epsilon_wire_out), .w2(epsilon_wire_out)
-        ,.w3(epsilon_wire_out), .w4(one_reg), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu4), .rst(rst_plu));
+        ,.w3(epsilon_wire_out), .w4(one_reg), .a1(a1_wire_out), .a2(a2_wire_out), .a3(a3_wire_out), .a4(a4_wire_out), .out(plu4), .rst(rst_plu), .overflow(ov4));
 
     OutputCheck outch(.clk(clk) , .x1(plu1),.x2(plu2),.x3(plu3),.x4(plu4), .a1(a1_prim),.a2(a2_prim),.a3(a3_prim)
                 ,.a4(a4_prim) , .out(out) , .valid(finish));
