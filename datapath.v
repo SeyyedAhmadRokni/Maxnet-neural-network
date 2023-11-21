@@ -1,9 +1,17 @@
 module  DataPath(input clk ,rst_plu ,eps_reg_we ,we_a_reg , we_prim , mux_sel , start  , input [31:0] a1_init,a2_init,a3_init,a4_init,epsilon   , 
-    output plu_done , finish , output [31:0] out);
+    output plu_done , finish , loop , output [31:0] out);
     
     wire [31:0] a1_wire_out , a2_wire_out , a3_wire_out , a4_wire_out , plu1 , plu2 , plu3 , plu4,
         epsilon_wire_out ,mux1_out,mux3_out,mux2_out,mux4_out ,a1_prim,a2_prim,a3_prim,a4_prim;
     wire plu1_done,plu2_done,plu3_done,plu4_done;
+    
+    wire constant_a1,constant_a2,constant_a3,constant_a4;
+    assign constant_a1= |(plu1 ^ a1_wire_out);
+    assign constant_a2= |(plu2 ^ a2_wire_out);
+    assign constant_a3= |(plu3 ^ a3_wire_out);
+    assign constant_a4= |(plu4 ^ a4_wire_out);
+    assign loop = ~(constant_a1 | constant_a2 | constant_a3 | constant_a4);
+
     MUX2 mux1(mux_sel , plu1 , a1_init ,  mux1_out);
     MUX2 mux2(mux_sel , plu2 , a2_init ,  mux2_out);
     MUX2 mux3(mux_sel , plu3 , a3_init ,  mux3_out);

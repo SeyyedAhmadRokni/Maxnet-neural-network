@@ -13,10 +13,6 @@ module Mul(a, b, out);
         if (~(| a[30:0]) | ~(| b[30:0]))begin
             mantices = 23'b0;
             exponent = 7'b0;
-<<<<<<< HEAD
-            
-=======
->>>>>>> 6b85de504a3af3ff12b37166e7c9f029add7e9ee
         end else begin
             mantices = {1'b1, a[22:0]} * {1'b1,b[22:0]};
             exponent = a[30:23] - bias + b[30:23];
